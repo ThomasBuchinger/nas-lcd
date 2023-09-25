@@ -1,12 +1,7 @@
-# i2c_20x4_lcd
+# NAS LCD
 
-## Where to buy
-* https://www.hardkernel.com/shop/i2c-lcd-module/
+A small container updating the LCD screen of the NAS.
 
-## Tutorials
-* https://wiki.odroid.com/odroid-h2/application_note/i2c_20x4_lcd
-
-## Based on
-* https://github.com/pimatic/pimatic/issues/271
-* http://www.gejanssen.com/howto/i2c_display_2004_raspberrypi/index.html
-* https://github.com/sweetpi/python-i2c-lcd
+Notes
+* [LCD Tutorial](https://wiki.odroid.com/odroid-h3/application_note/i2c_20x4_lcd)
+* Missing Kernel module on TrueNAS SCALE: [see here](https://forum.odroid.com/viewtopic.php?t=45934)
