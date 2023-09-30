@@ -10,20 +10,25 @@ def check_raidpool_online():
   lcd.display_string("raidpool: "+health, 1)
   return health == "ONLINE"
 
+def discover_lcd_address():
+  bus = 0
+  address = 0x3f
+  if len(sys.argv) > 1:
+    address = int(sys.argv[1], 16)
+  if len(sys.argv) > 2:
+    bus = int(sys.argv[1])
+    address = int(sys.argv[2], 16)
+  return bus, address
 
 # Setup screen
-#
-bus = 0
-address = 0x3f
-if len(sys.argv) > 1:
-    address = int(argv[1], 16)
-if len(sys.argv) > 2:
-    bus = int(argv[1])
-    address = int(argv[2], 16)
+bus, address = discover_lcd_address
+print("Using LCD parameter: bus={} address={}".format(buss, address))
 lcd = lcd.lcd(bus, address)
+lcd.display_string("Successfully connected to LCD", 1)
+print("Successfully connected to LCD")
 
 ### Startup Checks ##########################
-
+print("Running startup Checks...")
 # Wait for zfs pool "raidpool" to come online
 while not check_raidpool_online:
   sleep(1)
