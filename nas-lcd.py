@@ -1,8 +1,8 @@
-import lcddriver as lcd
 from time import time, sleep
 from datetime import datetime
 import sys
 import subprocess
+import os
 
 def check_raidpool_online():
   zpool_list = subprocess.run(["zpool", "list", "raidpool", "-o", "health"], capture_output=True)
@@ -10,7 +10,11 @@ def check_raidpool_online():
   lcd.display_string("raidpool: "+health, 1)
   return health == "ONLINE"
 
-def get_lcd_arguments():
+def get_lcd():
+  if os.environ.get("DEBUG", "off") == "ON":
+    import fake_lcd
+    return fake_lcd.FakeLcd()
+
   bus = 0
   address = 0x3f
   if len(sys.argv) > 1:
@@ -18,13 +22,13 @@ def get_lcd_arguments():
   if len(sys.argv) > 2:
     bus = int(sys.argv[1])
     address = int(sys.argv[2], 16)
-  return bus, address
+  print("Using LCD parameter: bus={} address={}".format(bus, address))
+  import lcddriver
+  return lcddriver.lcd(bus, address)
 
 # Setup screen
-bus, address = get_lcd_arguments()
-print("Using LCD parameter: bus={} address={}".format(bus, address))
-lcd = lcd.lcd(bus, address)
-lcd.display_string("Successfully connected to LCD", 1)
+lcd = get_lcd()
+lcd.display_string("Success - LCD", 1)
 print("Successfully connected to LCD")
 
 ### Startup Checks ##########################
