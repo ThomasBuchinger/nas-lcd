@@ -1,6 +1,6 @@
 class FakeLcd():
   def display_string(self, string, line):
-    print("{}: {}".format(line, string))
+    print("{}: {}".format(line, string)[0:23])
 
   def clear(self):
     print("Clear!")
