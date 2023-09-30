@@ -10,4 +10,4 @@ RUN apt-get update && \
 
 WORKDIR /app
 ADD ./ /app
-CMD [ "python3", "hello_world.py", "0", "27" ]
+CMD [ "python3", "nas-lcd.py", "0", "27" ]
