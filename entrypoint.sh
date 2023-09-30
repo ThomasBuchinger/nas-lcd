@@ -3,7 +3,7 @@ set -e
 
 echo "Available i2c Bus:"
 i2cdetect -l
-ls /dev/i2c-* || echo "No i2c devices found!" && exit 1
+ls /dev/i2c-* > /dev/null || (echo "No i2c devices found!" && exit 1)
 
 for bus_name in $(i2cdetect -l | awk '/Synopsys DesignWare I2C adapter/{ print $1 }'); do
   # Probe if there is a device on address 0x27 (decimal 39)
