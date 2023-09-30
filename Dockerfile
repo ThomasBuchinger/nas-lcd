@@ -7,6 +7,7 @@ RUN apt-get update && \
         python3-smbus \
         python3-psutil \
         python3-dev \
+        zfsutils-linux \
         vim
 
 WORKDIR /app
