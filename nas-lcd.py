@@ -19,7 +19,6 @@ def system_stats(last_read_bytes, last_write_bytes, last_net_receive, last_net_s
   data = {
     "cpu_usage": psutil.cpu_percent(),
     "mem_usage": psutil.virtual_memory().percent,
-    "disk_free": bytes2human(psutil.disk_usage("/mnt/raidpool").free),
     "disk_io_read_raw": read_bytes,
     "disk_io_write_raw": write_bytes,
     "disk_io_read_bytes": bytes2human(read_bytes - last_read_bytes),
