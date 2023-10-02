@@ -82,8 +82,8 @@ while True:
 
   timeString = datetime.now().strftime('%H:%M:%S')
 #  lcd.display_string("01234567890123456789".format(timeString), 5)
-  lcd.display_string("{}, {:.2f} days".format(timeString, uptime), 1)
+  lcd.display_string("{}, {:.2f} day".format(timeString, uptime), 1)
   lcd.display_string("CPU: {}% Mem: {}%".format(stats["cpu_usage"], stats["mem_usage"]), 2)
-  lcd.display_string("Disk(R/W): {}/{}".format(stats["disk_io_read_bytes"], stats["disk_io_write_bytes"]), 3)
-  lcd.display_string("Net(R/W): {}/{} ".format(stats["net_io_recv_bytes"], stats["net_io_send_bytes"]), 4)
+  lcd.display_string("Disk: {}/{}".format(stats["disk_io_read_bytes"], stats["disk_io_write_bytes"]), 3)
+  lcd.display_string("Net: {}/{} ".format(stats["net_io_recv_bytes"], stats["net_io_send_bytes"]), 4)
   sleep(60)
